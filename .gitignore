@@ -6,6 +6,10 @@
 *.iws
 *.ipr
 
+# Spring Boot配置文件
+application.properties
+application.yml
+
 # =========================
 # Java / Maven
 # =========================
