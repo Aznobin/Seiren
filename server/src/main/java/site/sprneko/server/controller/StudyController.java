@@ -7,6 +7,7 @@ import site.sprneko.server.repository.StudyRecordRepository;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -17,11 +18,23 @@ public class StudyController {
         this.repository = repository;
     }
 
-    @GetMapping("/api/study")
-    public Map<String, Object> study() {
+    // @GetMapping("/api/study")
+    // public Map<String, Object> study() {
+    //     return Map.of(
+    //             "title", "学习 SpringBoot",
+    //             "done", false);
+    // }
+    @GetMapping("/api/attendance")
+    public Map<String, Object> attendance() {
         return Map.of(
-                "title", "学习 SpringBoot",
-                "done", false);
+                "date", "2026-09-21",
+                "present", true);
+    }
+
+    @GetMapping("/api/study")
+    public List<StudyRecord> studyList() {
+        List<StudyRecord> records = repository.findAll();
+        return records;
     }
 
     /*@PostMapping("/api/study")
@@ -57,12 +70,5 @@ public class StudyController {
                 "message", "学习记录成功");
     }
 
-
-    @GetMapping("/api/attendance")
-    public Map<String, Object> attendance() {
-        return Map.of(
-                "date", "2026-09-21",
-                "present", true);
-    }
 
 }
