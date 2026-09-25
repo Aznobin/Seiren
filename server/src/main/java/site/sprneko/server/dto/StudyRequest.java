@@ -1,4 +1,4 @@
-package site.sprneko.server;
+package site.sprneko.server.dto;
 
 public class StudyRequest {
     private String title;

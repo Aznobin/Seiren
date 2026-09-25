@@ -1,4 +1,4 @@
-package site.sprneko.server;
+package site.sprneko.server.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
