@@ -11,6 +11,9 @@ application.properties
 **/application.yml
 **/application.properties
 
+# Spring Boot日志文件
+**/app.log
+
 # =========================
 # Java / Maven
 # =========================
