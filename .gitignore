@@ -13,6 +13,7 @@ application.properties
 
 # Spring Boot日志文件
 **/app.log
+**/app.log.*.gz
 
 # =========================
 # Java / Maven
