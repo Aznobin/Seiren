@@ -2,8 +2,8 @@ package site.sprneko.server.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import site.sprneko.server.dto.WordRequest;
-import site.sprneko.server.dto.WordResponse;
+import site.sprneko.server.dto.word.WordRequest;
+import site.sprneko.server.dto.word.WordResponse;
 import site.sprneko.server.service.WordService;
 import site.sprneko.server.validator.WordValidator;
 

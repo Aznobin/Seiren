@@ -2,7 +2,7 @@ package site.sprneko.server.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import site.sprneko.server.dto.WordResponse;
+import site.sprneko.server.dto.word.WordResponse;
 import site.sprneko.server.entity.Word;
 import site.sprneko.server.repository.WordRepository;
 
