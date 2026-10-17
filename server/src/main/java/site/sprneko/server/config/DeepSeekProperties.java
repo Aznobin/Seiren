@@ -9,4 +9,8 @@ import org.springframework.stereotype.Component;
 public class DeepSeekProperties {
     @Value("${deepseek.api-key}")
     private String apiKey;
+    @Value("${deepseek.base-url}")
+    private String baseUrl;
+    @Value("${deepseek.model}")
+    private String model;
 }
