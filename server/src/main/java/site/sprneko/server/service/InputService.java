@@ -3,18 +3,18 @@ package site.sprneko.server.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import site.sprneko.server.dto.word.WordResponse;
-import site.sprneko.server.entity.Word;
-import site.sprneko.server.repository.WordRepository;
+import site.sprneko.server.entity.Input;
+import site.sprneko.server.repository.InputRepository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Slf4j
 @Service
-public class WordService {
-    private final WordRepository wordRepository;
-    public WordService(WordRepository wordRepository) {
-        this.wordRepository = wordRepository;
+public class InputService {
+    private final InputRepository inputRepository;
+    public InputService(InputRepository inputRepository) {
+        this.inputRepository = inputRepository;
     }
 
     public String normalizeWord(String originalWord) {
@@ -30,22 +30,22 @@ public class WordService {
     }
 
     public WordResponse recordWord(String originalWord) {
-        Optional<Word> result = wordRepository.findByOriginalWord(originalWord);
+        Optional<Input> result = inputRepository.findByOriginalWord(originalWord);
         if (result.isPresent()) {
 
-            Word word = result.get();
+            Input word = result.get();
             word.setCount(word.getCount() + 1);
             word.setLastSeen(LocalDateTime.now());
 
             log.info("Updating word: {}", originalWord);
 
-            wordRepository.save(word);
+            inputRepository.save(word);
 
             return new WordResponse(word.getNormalizedWord(), word.getCount());
 
         } else {
 
-            Word word = new Word();
+            Input word = new Input();
 
             String normalizedWord = normalizeWord(originalWord);
             word.setNormalizedWord(normalizedWord);
@@ -57,7 +57,7 @@ public class WordService {
 
             log.info("Create new word: {}", originalWord);
 
-            wordRepository.save(word);
+            inputRepository.save(word);
 
             return new WordResponse(word.getNormalizedWord(), word.getCount());
         }
