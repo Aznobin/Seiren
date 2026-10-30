@@ -1,26 +1,29 @@
 package site.sprneko.server.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Map;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "word")
 
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String word;
-    private List<Tanslation> translation;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "json")
+    private Map<String, Object> translation;
     private int count;
     private int status;
-    private LocalDateTime firstSeen;
-    private LocalDateTime lastSeen;
+    private LocalDateTime firstSeen = LocalDateTime.now();
+    private LocalDateTime lastSeen = LocalDateTime.now();
 }

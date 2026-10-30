@@ -10,7 +10,7 @@ public class DeepSeekClientTest {
     @Autowired
     private DeepSeekClient deepSeekClient;
     @Test
-    public void test() {
-        deepSeekClient.test();
+    public void translate() {
+        System.out.println(deepSeekClient.translateWord("public"));
     }
 }

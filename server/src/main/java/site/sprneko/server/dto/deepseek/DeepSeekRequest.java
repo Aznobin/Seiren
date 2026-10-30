@@ -1,17 +1,20 @@
 package site.sprneko.server.dto.deepseek;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class DeepSeekRequest {
     private String model;
     private boolean think;
     private List<Message> messages;
 
-    @Data
+    @Getter
+    @Setter
     @AllArgsConstructor
     public static class Message {
         private String role;
