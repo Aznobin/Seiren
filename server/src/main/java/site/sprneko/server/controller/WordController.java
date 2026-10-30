@@ -2,9 +2,10 @@ package site.sprneko.server.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import site.sprneko.server.dto.WordRequest;
-import site.sprneko.server.dto.WordResponse;
-import site.sprneko.server.service.WordService;
+import site.sprneko.server.client.DeepSeekClient;
+import site.sprneko.server.dto.word.WordRequest;
+import site.sprneko.server.dto.word.WordResponse;
+import site.sprneko.server.service.InputService;
 import site.sprneko.server.validator.WordValidator;
 
 @Slf4j
@@ -14,10 +15,12 @@ import site.sprneko.server.validator.WordValidator;
 
 public class WordController {
 
-    private final WordService wordService;
+    private final InputService inputService;
+    private final DeepSeekClient deepSeekClient;
 
-    public WordController(WordService wordService) {
-        this.wordService = wordService;
+    public WordController(InputService inputService, DeepSeekClient deepSeekClient) {
+        this.inputService = inputService;
+        this.deepSeekClient = deepSeekClient;
     }
 
     @PostMapping("/word")
@@ -35,7 +38,7 @@ public class WordController {
         WordValidator.checkLength(originalWord);
 
         log.info("Recording originalWord: {}", originalWord);
-        return wordService.recordWord(originalWord);
+        return inputService.recordWord(originalWord);
     }
 
 }

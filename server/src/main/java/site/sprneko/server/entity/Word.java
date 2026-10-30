@@ -1,78 +1,29 @@
 package site.sprneko.server.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "word")
+
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String originalWord;
-    private String normalizedWord;
+    private String word;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "json")
+    private Map<String, Object> translation;
     private int count;
-    private LocalDateTime firstSeen;
-    private LocalDateTime lastSeen;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getOriginalWord() {
-        return originalWord;
-    }
-
-    public void setOriginalWord(String originalWord) {
-        this.originalWord = originalWord;
-    }
-
-    public String getNormalizedWord() {
-        return normalizedWord;
-    }
-
-    public void setNormalizedWord(String normalizedWord) {
-        this.normalizedWord = normalizedWord;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public LocalDateTime getFirstSeen() {
-        return firstSeen;
-    }
-
-    public void setFirstSeen(LocalDateTime firstSeen) {
-        this.firstSeen = firstSeen;
-    }
-
-    public LocalDateTime getLastSeen() {
-        return lastSeen;
-    }
-
-    public void setLastSeen(LocalDateTime lastSeen) {
-        this.lastSeen = lastSeen;
-    }
-
-    public Word() {
-    }
-
-    public Word(Long id, String originalWord, String nomalizedWord, int count, LocalDateTime firstSeen, LocalDateTime lastSeen) {
-        this.id = id;
-        this.originalWord = originalWord;
-        this.normalizedWord = nomalizedWord;
-        this.count = count;
-        this.firstSeen = firstSeen;
-        this.lastSeen = lastSeen;
-    }
+    private int status;
+    private LocalDateTime firstSeen = LocalDateTime.now();
+    private LocalDateTime lastSeen = LocalDateTime.now();
 }

@@ -1,4 +1,4 @@
-package site.sprneko.server.dto;
+package site.sprneko.server.dto.word;
 
 public class WordResponse {
     private String normalizedWord;
