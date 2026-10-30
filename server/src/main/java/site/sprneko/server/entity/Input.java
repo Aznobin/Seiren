@@ -15,6 +15,7 @@ public class Input {
     private String originalWord;
     private String normalizedWord;
     private int count;
+    private int status;
     private LocalDateTime firstSeen;
     private LocalDateTime lastSeen;
 }
