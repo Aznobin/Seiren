@@ -2,6 +2,7 @@ package site.sprneko.server.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import site.sprneko.server.client.DeepSeekClient;
 import site.sprneko.server.dto.word.WordResponse;
 import site.sprneko.server.entity.Input;
 import site.sprneko.server.repository.InputRepository;

@@ -2,6 +2,7 @@ package site.sprneko.server.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import site.sprneko.server.client.DeepSeekClient;
 import site.sprneko.server.dto.word.WordRequest;
 import site.sprneko.server.dto.word.WordResponse;
 import site.sprneko.server.service.InputService;
@@ -15,9 +16,11 @@ import site.sprneko.server.validator.WordValidator;
 public class WordController {
 
     private final InputService inputService;
+    private final DeepSeekClient deepSeekClient;
 
-    public WordController(InputService inputService) {
+    public WordController(InputService inputService, DeepSeekClient deepSeekClient) {
         this.inputService = inputService;
+        this.deepSeekClient = deepSeekClient;
     }
 
     @PostMapping("/word")

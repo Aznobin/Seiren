@@ -10,11 +10,11 @@ import java.util.List;
 public class DeepSeekResponse {
     private List<Choice> choices;
 
-    @Data
+    @Getter
     public static class Choice {
         private Message message;
     }
-   @Data
+    @Getter
     public static class Message {
         private String content;
     }
